@@ -29,4 +29,5 @@ int main(void)
 		next = first + second;
 		count++;
 	}
+	return (0);
 }
