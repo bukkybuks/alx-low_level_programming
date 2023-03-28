@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * _atoi - converts a string to an integer
  * @s: string
@@ -7,25 +6,33 @@
  */
 int _atoi(char *s)
 {
-	int sign, result, index;
+	int c = 0;
+	unsigned int ni = 0;
+	int min = 1;
+	int isi = 0;
 
-	result = 0;
-	sign = 0;
-
-	for (index = 0; s[index] != '\0'; index++)
+	while (s[c])
 	{
-		if (s[index] == '-')
+		if (s[c] == 45)
 		{
-			sign++;
+			min *= -1;
 		}
-		if (s[index] > 47 && s[index] < 58)
+
+		while (s[c] >= 48 && s[c] <= 57)
 		{
-			while (s[index] > 47 && s[index] < 58)
-			{
-				result = result * 10 - (s[index++] - 48);
-				break;
-			}
+			isi = 1;
+			ni = (ni * 10) + (s[c] - '0');
+			c++;
 		}
+
+		if (isi == 1)
+		{
+			break;
+		}
+
+		c++;
 	}
-	return (result *= sign % 2 == 0 ? -1 : 1);
+
+	ni *= min;
+	return (ni);
 }
